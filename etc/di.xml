@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tan\SpcSalesRule\Api\Data\Rule\FreeGiftInterface" type="Tan\SpcSalesRule\Model\Rule\FreeGift"/>
+    <preference for="Tan\SpcSalesRule\Api\Rule\FreeGiftRepositoryInterface" type="Tan\SpcSalesRule\Model\Rule\FreeGiftRepository"/>
+    <preference for="Tan\SpcSalesRule\Api\RuleDataRepositoryInterface" type="Tan\SpcSalesRule\Model\RuleDataRepository"/>
+    <preference for="Tan\SpcSalesRule\Api\Data\RuleDataInterface" type="Tan\SpcSalesRule\Model\RuleData"/>
+
+    <type name="Tan\SpcSalesRule\Model\Rule\FreeGift\Service">
+        <arguments>
+            <argument name="freeGiftRuleValidators" xsi:type="array">
+                <item name="fromToDateInterval" xsi:type="object">Tan\SpcSalesRule\Model\Rule\FreeGift\Validator\FromToDateInterval</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\SalesRule\Model\Rule">
+        <plugin name="TanSpcSaleRulePluginSalesRuleModelRule" type="Tan\SpcSalesRule\Plugin\Model\SalesRule\Rule"/>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="create_tan_spc_salesrule_rule" xsi:type="string">Tan\SpcSalesRule\Model\RuleData\SaveHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="update_tan_spc_salesrule_rule" xsi:type="string">Tan\SpcSalesRule\Model\RuleData\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="read_tan_spc_salesrule_rule" xsi:type="string">Tan\SpcSalesRule\Model\RuleData\ReadHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Tan\Spc\Model\Box\Order\Item" type="Tan\SpcSalesRule\Model\Box\Order\Item"/>
+
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="TanSpcSalesRulePluginSalesModelOrder" type="Tan\SpcSalesRule\Plugin\Sales\Model\Order"/>
+    </type>
+    <type name="Tan\Spc\Plugin\Model\Order\ItemRepository">
+        <plugin name="TanSpcSalesRulePluginSpcModelOrderItemRepository" type="Tan\SpcSalesRule\Plugin\Spc\Model\Order\ItemRepository" />
+    </type>
+    <type name="Magento\Sales\Model\Service\OrderService">
+        <plugin name="TanSpcSalesRulePluginModelServiceOrderService" type="Tan\SpcSalesRule\Plugin\Model\Service\OrderService"/>
+    </type>
+    <type name="Tan\Spc\Plugin\Model\Service\OrderService">
+        <plugin name="TanSpcSalesRulePluginSpcModelServiceOrderService" type="Tan\SpcSalesRule\Plugin\Spc\Model\Service\OrderService" />
+    </type>
+    <type name="Magento\SalesRule\Model\Utility">
+        <plugin name="TanSpcSalesRulePluginModelSalesRuleUtility" type="Tan\SpcSalesRule\Plugin\Model\SalesRule\Utility"/>
+    </type>
+    <type name="Amasty\Promo\Helper\Data">
+        <plugin name="TanSpcSalesRulePluginAmastyPromoHelperData" type="Tan\SpcSalesRule\Plugin\Amasty\Promo\Helper\Data"/>
+    </type>
+    <type name="Tan\Subscriptions\Api\OrderManagementInterface">
+        <plugin name="TanSpcSalesRulePluginSubscriptionsModelServiceOrderManagement" type="Tan\SpcSalesRule\Plugin\Subscriptions\Model\Service\OrderManagement"/>
+    </type>
+    <type name="Amasty\Promo\Block\Items">
+        <plugin name="TanSpcSalesRulePluginAmastyPromoBlockItems" type="Tan\SpcSalesRule\Plugin\Amasty\Promo\Block\Items" />
+    </type>
+</config>

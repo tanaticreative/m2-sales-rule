@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+<module name="Tan_SpcSalesRule" setup_version="1.0.0">
+    <sequence>
+        <module name="Tan_Spc"/>
+        <module name="Tan_Subscriptions"/>
+        <module name="Magento_Eav"/>
+        <module name="Tan_ProductAttributes"/>
+        <module name="Amasty_Promo"/>
+        <module name="Magento_SalesRule"/>
+        <module name="Magento_SalesRuleStaging" />
+    </sequence>
+</module>
+</config>

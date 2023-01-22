@@ -1,0 +1,27 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tan_spc_free_gift_salesrule" resource="default" engine="innodb" comment="Contains all eligible free gift sales rules">
+        <column xsi:type="int" name="salesrule_row_id" unsigned="true" padding="10" identity="false" nullable="false" comment="The row id of free gift eligible sales rule"/>
+        <constraint xsi:type="foreign" referenceId="TAN_SPC_FREE_GIFT_SALESRULE_SALESRULE_ROW_ID_SALESRULE_ROW_ID" table="tan_spc_free_gift_salesrule" column="salesrule_row_id" referenceTable="salesrule" referenceColumn="row_id" onDelete="CASCADE"/>
+        <constraint xsi:type="unique" referenceId="TAN_SPC_FREE_GIFT_SALESRULE_SALESRULE_ROW_ID">
+            <column name="salesrule_row_id"/>
+        </constraint>
+    </table>
+    <table name="tan_sales_order_item_spc">
+        <column xsi:type="smallint" name="free_gift" padding="5" unsigned="true" nullable="false" comment="Flag the order item as free gift or not"/>
+        <column xsi:type="int" name="spc_box_free_gift_qty" padding="5" unsigned="true" identity="false" nullable="false" default="0" comment="Qty of free gift items"/>
+        <index referenceId="TAN_SALES_ORDER_ITEM_SPC_FREE_GIFT" indexType="btree">
+            <column name="free_gift"/>
+        </index>
+    </table>
+
+    <table name="tan_spc_salesrule_rule" resource="default" engine="innodb" comment="Sales Rule extra data">
+        <column xsi:type="int" name="entity_id" unsigned="true" padding="11" nullable="false" comment="Entity id" identity="true"/>
+        <column xsi:type="int" name="salesrule_id" unsigned="true" padding="10" nullable="false" comment="The salesrule id to which the data is associated"/>
+        <column xsi:type="smallint" name="promotion_bundle_product_count" default="0" nullable="false" unsigned="true" padding="2" comment="Promotion Bundle Product Count"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TAN_SPC_SALESRULE_RULE_SALESRULE_ID_TO_SALESRULE_ROW_ID" table="tan_spc_salesrule_rule" column="salesrule_id" referenceTable="salesrule" referenceColumn="row_id" onDelete="CASCADE"/>
+    </table>
+</schema>

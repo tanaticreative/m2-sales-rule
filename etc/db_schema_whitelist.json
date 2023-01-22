@@ -1,0 +1,36 @@
+{
+    "tan_spc_free_gift_salesrule": {
+        "column": {
+            "salesrule_row_id": true
+        },
+        "constraint": {
+            "TAN_SPC_FREE_GIFT_SALESRULE_SALESRULE_ROW_ID_SALESRULE_ROW_ID": true,
+            "TAN_SPC_FREE_GIFT_SALESRULE_SALESRULE_ROW_ID": true
+        }
+    },
+    "tan_sales_order_item_spc": {
+        "column": {
+            "free_gift": true,
+            "spc_box_free_gift_qty": true
+        },
+        "index": {
+            "TAN_SALES_ORDER_ITEM_SPC_FREE_GIFT": true
+        }
+    },
+    "salesrule": {
+        "column": {
+            "promotion_bundle_product_count": true
+        }
+    },
+    "tan_spc_salesrule_rule": {
+        "column": {
+            "entity_id": true,
+            "salesrule_id": true,
+            "promotion_bundle_product_count": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "TAN_SPC_SALESRULE_RULE_SALESRULE_ID_SALESRULE_ROW_ID": true
+        }
+    }
+}

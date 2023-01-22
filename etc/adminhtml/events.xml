@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="salesrule_rule_condition_combine">
+        <observer name="Tan_SpcSalesRule_Observer_RuleConditionCombine" instance="Tan\SpcSalesRule\Observer\RuleConditionCombine" />
+    </event>
+    <event name="salesrule_rule_save_after">
+        <observer name="Tan\SpcSalesRule\Observer\ValidateFreeGiftSalesRule" instance="Tan\SpcSalesRule\Observer\ValidateFreeGiftSalesRule" />
+    </event>
+</config>

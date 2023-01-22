@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Sales\Api\Data\OrderItemInterface">
+        <attribute code="spc_box_free_gift" type="int">
+            <join reference_table="tan_sales_order_item_spc" reference_field="item_id" join_on_field="item_id">
+                <field>free_gift</field>
+            </join>
+        </attribute>
+        <attribute code="spc_box_free_gift_qty" type="int">
+            <join reference_table="tan_sales_order_item_spc" reference_field="item_id" join_on_field="item_id">
+                <field>spc_box_free_gift_qty</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+    <extension_attributes for="Magento\SalesRule\Api\Data\RuleInterface">
+        <attribute code="promotion_bundle_product_count" type="int">
+            <join reference_table="tan_spc_salesrule_rule" reference_field="salesrule_id" join_on_field="row_id">
+                <field>promotion_bundle_product_count</field>
+            </join>
+        </attribute>
+    </extension_attributes>
+</config>
