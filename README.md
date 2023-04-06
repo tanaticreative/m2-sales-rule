@@ -1,7 +1,7 @@
-TAN Spc Sales Rule
+Sales Rule
 =====================
 
-TAN Spc Rule will hold all the business logic associated with the promotions for spc
+Rule will hold all the business logic associated with the promotions for spc
 
 # Changelog
 All notable changes to this project will be documented in this file.
